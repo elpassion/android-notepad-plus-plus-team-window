@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:tools="http://schemas.android.com/tools"
+    tools:context="pl.elpassion.window.sql_lite_note_app.CreateAndEditActivity">
+
+</menu>
