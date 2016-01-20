@@ -16,4 +16,6 @@ open class NoteActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState, persistentState)
         setContentView(R.layout.create_and_edit_layout)
     }
+
+
 }
