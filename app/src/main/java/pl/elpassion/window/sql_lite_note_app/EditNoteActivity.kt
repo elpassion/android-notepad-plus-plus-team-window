@@ -8,8 +8,7 @@ import android.os.Bundle
 class EditNoteActivity : NoteActivity() {
 
     private val note : Note by lazy {
-        NoteDAO.getInstance(applicationContext)
-                .findOne(intent.getIntExtra(noteItemIdKey, -1))
+        noteDao.findOne(intent.getIntExtra(noteItemIdKey, -1))
     }
 
     companion object {
@@ -22,6 +21,8 @@ class EditNoteActivity : NoteActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val noteId = intent.getIntExtra(noteItemIdKey, -1)
+        id = if(noteId == -1) null else noteId
         setUpNoteView()
     }
 
