@@ -9,6 +9,7 @@
         android:id="@+id/note_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:padding="16dp"
         android:textStyle="bold"
         tools:text="Name your note" />
 
@@ -21,5 +22,7 @@
         android:id="@+id/note_content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:padding="16dp"
         tools:text="Write your note" />
+
 </LinearLayout>

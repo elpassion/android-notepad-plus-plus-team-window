@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="pl.elpassion.window.sql_lite_note_app.CreateNoteActivity">
-
+    <item
+        android:id="@+id/action_save"
+        android:orderInCategory="100"
+        android:title="save_note"
+        android:icon="@android:drawable/ic_menu_save"
+        app:showAsAction="always" />
 </menu>
