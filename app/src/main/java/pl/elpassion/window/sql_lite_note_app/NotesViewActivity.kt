@@ -1,18 +1,16 @@
 package pl.elpassion.window.sql_lite_note_app
 
 import android.os.Bundle
-import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
-import android.widget.Toast
 import de.greenrobot.event.EventBus
 import pl.elpassion.dmalantowicz.rest_client_example.adapter.NoteListAdapter
 import pl.elpassion.window.sql_lite_note_app.message.ItemDetailsMessageEvent
-import java.util.*
 
 class NotesViewActivity : AppCompatActivity() {
     val recyclerView by lazy { findViewById(R.id.notes_list) as RecyclerView }
+    val noteDao by lazy {  NoteDAO.getInstance(applicationContext) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,10 +19,7 @@ class NotesViewActivity : AppCompatActivity() {
     }
 
     private fun setUpRecycleView() {
-        val notes = ArrayList<Note>()
-        for (i in 0..10){
-            notes.add(Note(i, "test" + i, "content" + i))
-        }
+        val notes = noteDao.findAll()
         recyclerView.layoutManager = LinearLayoutManager(recyclerView.context)
         recyclerView.adapter = NoteListAdapter(notes)
     }
@@ -40,7 +35,6 @@ class NotesViewActivity : AppCompatActivity() {
     }
 
     fun onEvent(event: ItemDetailsMessageEvent){
-        Snackbar.make(recyclerView, event.id.toString(), Toast.LENGTH_SHORT).show();
         EditNoteActivity.start(this, event.id)
     }
 }

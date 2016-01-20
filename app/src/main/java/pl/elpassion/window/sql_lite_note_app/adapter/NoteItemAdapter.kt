@@ -28,7 +28,7 @@ class NoteItemAdapter(private val note: Note) : ItemAdapter {
         nameRateItemHolder.title.text = note.title
         nameRateItemHolder.content.text = note.content
         holder.itemView.setOnClickListener {
-            EventBus.getDefault().post(ItemDetailsMessageEvent(note.id))
+            EventBus.getDefault().post(ItemDetailsMessageEvent(note.id!!))
         }
     }
 
