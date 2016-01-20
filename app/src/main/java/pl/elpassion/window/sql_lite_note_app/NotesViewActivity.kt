@@ -21,8 +21,12 @@ class NotesViewActivity : AppCompatActivity() {
     }
 
     private fun setUpRecycleView() {
+        val notes = ArrayList<Note>()
+        for (i in 0..10){
+            notes.add(Note(i, "test" + i, "content" + i))
+        }
         recyclerView.layoutManager = LinearLayoutManager(recyclerView.context)
-        recyclerView.adapter = NoteListAdapter(ArrayList())
+        recyclerView.adapter = NoteListAdapter(notes)
     }
 
     override fun onStart() {
@@ -36,7 +40,7 @@ class NotesViewActivity : AppCompatActivity() {
     }
 
     fun onEvent(event: ItemDetailsMessageEvent){
-        Snackbar.make(recyclerView, event.id, Toast.LENGTH_SHORT).show();
+        Snackbar.make(recyclerView, event.id.toString(), Toast.LENGTH_SHORT).show();
         EditNoteActivity.start(this, event.id)
     }
 }
