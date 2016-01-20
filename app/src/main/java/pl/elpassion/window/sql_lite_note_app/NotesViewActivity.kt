@@ -22,7 +22,6 @@ class NotesViewActivity : AppCompatActivity() {
         recyclerView.adapter = NoteListAdapter(ArrayList())
     }
 
-
     override fun onStart() {
         super.onStart()
         EventBus.getDefault().register(this);
