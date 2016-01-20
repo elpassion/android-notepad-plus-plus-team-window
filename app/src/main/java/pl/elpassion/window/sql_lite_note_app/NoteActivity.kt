@@ -11,10 +11,6 @@ open class NoteActivity : AppCompatActivity() {
 
     protected val noteTitle by lazy { findViewById(R.id.note_title) as EditText }
     protected val noteContent by lazy { findViewById(R.id.note_content) as EditText }
-    private val note : Note by lazy {
-        NoteDAO.getInstance(applicationContext)
-        .findOne(intent.getIntExtra(noteItemIdKey, -1))
-    }
 
 
     companion object {
@@ -24,12 +20,6 @@ open class NoteActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.create_and_edit_layout)
-        val noteId = intent.getIntExtra(noteItemIdKey, 0)
-        setUpNoteView()
     }
 
-    private fun setUpNoteView() {
-        noteTitle.setText(note.title)
-        noteContent.setText(note.content)
-    }
 }
