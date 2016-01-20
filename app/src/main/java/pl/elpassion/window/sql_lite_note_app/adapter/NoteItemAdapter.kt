@@ -8,7 +8,7 @@ import android.widget.TextView
 import de.greenrobot.event.EventBus
 import pl.elpassion.window.sql_lite_note_app.Note
 import pl.elpassion.window.sql_lite_note_app.R
-import pl.elpassion.window.sql_lite_note_app.message.ItemDetailsMessageEvent
+import pl.elpassion.window.sql_lite_note_app.message.NoteSelectedEvent
 
 /**
  * Created by dmalantowicz on 15.01.2016.
@@ -28,7 +28,7 @@ class NoteItemAdapter(private val note: Note) : ItemAdapter {
         nameRateItemHolder.title.text = note.title
         nameRateItemHolder.content.text = note.content
         holder.itemView.setOnClickListener {
-            EventBus.getDefault().post(ItemDetailsMessageEvent(note.id!!))
+            EventBus.getDefault().post(NoteSelectedEvent(note))
         }
     }
 

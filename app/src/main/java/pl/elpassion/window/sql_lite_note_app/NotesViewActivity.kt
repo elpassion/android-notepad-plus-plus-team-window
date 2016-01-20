@@ -10,7 +10,7 @@ import android.view.Menu
 import android.view.MenuItem
 import de.greenrobot.event.EventBus
 import pl.elpassion.dmalantowicz.rest_client_example.adapter.NoteListAdapter
-import pl.elpassion.window.sql_lite_note_app.message.ItemDetailsMessageEvent
+import pl.elpassion.window.sql_lite_note_app.message.NoteSelectedEvent
 
 class NotesViewActivity : AppCompatActivity() {
 
@@ -52,8 +52,8 @@ class NotesViewActivity : AppCompatActivity() {
         super.onStop()
     }
 
-    fun onEvent(event: ItemDetailsMessageEvent){
-        EditNoteActivity.start(this, event.id)
+    fun onEvent(event: NoteSelectedEvent){
+        EditNoteActivity.start(this, event.note)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

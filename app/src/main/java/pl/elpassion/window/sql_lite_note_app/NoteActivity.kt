@@ -17,12 +17,14 @@ open class NoteActivity : AppCompatActivity() {
     protected val noteDao by lazy {  NoteDAO.getInstance(applicationContext) }
 
     companion object {
-        val noteItemIdKey: String = "noteItemId"
+        val noteKey: String = "noteKey"
    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.create_and_edit_layout)
+        val note = intent.getSerializableExtra(noteKey) as Note?
+        if (note != null) id = note.id
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
