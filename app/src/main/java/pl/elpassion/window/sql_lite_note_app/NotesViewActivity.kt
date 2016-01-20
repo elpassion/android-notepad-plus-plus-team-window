@@ -17,7 +17,10 @@ class NotesViewActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.notes_list)
+        setUpRecycleView()
+    }
 
+    private fun setUpRecycleView() {
         recyclerView.layoutManager = LinearLayoutManager(recyclerView.context)
         recyclerView.adapter = NoteListAdapter(ArrayList())
     }
@@ -34,5 +37,6 @@ class NotesViewActivity : AppCompatActivity() {
 
     fun onEvent(event: ItemDetailsMessageEvent){
         Snackbar.make(recyclerView, event.id, Toast.LENGTH_SHORT).show();
+        EditNoteActivity.start(this, event.id)
     }
 }
