@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.view.MenuItem
 import de.greenrobot.event.EventBus
 import pl.elpassion.dmalantowicz.rest_client_example.adapter.NoteListAdapter
 import pl.elpassion.window.sql_lite_note_app.message.ItemDetailsMessageEvent
@@ -22,6 +23,13 @@ class NotesViewActivity : AppCompatActivity() {
         val notes = noteDao.findAll()
         recyclerView.layoutManager = LinearLayoutManager(recyclerView.context)
         recyclerView.adapter = NoteListAdapter(notes)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if(item.itemId == R.id.action_create){
+            CreateNoteActivity.start(this)
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     override fun onStart() {

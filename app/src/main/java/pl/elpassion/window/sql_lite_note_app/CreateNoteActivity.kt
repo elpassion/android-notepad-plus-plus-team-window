@@ -6,9 +6,8 @@ import android.content.Intent
 class CreateNoteActivity : NoteActivity() {
 
     companion object {
-        fun start(context: Context, noteItemId : Int) {
+        fun start(context: Context) {
             val intent = Intent(context, CreateNoteActivity::class.java)
-            intent.putExtra(noteItemIdKey, noteItemId)
             context.startActivity(intent)
         }
     }
