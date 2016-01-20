@@ -17,12 +17,10 @@ class NoteDAO(context: Context, name: String = "notepadPlusPlusDB", factory: SQL
 
         private var dao : NoteDAO? = null
         fun getInstance (context: Context) :NoteDAO{
-            val noteDao : NoteDAO
             if (dao == null){
                 dao = NoteDAO(context = context, factory = null)
             }
-            noteDao = dao!!
-            return noteDao
+            return dao!!
         }
     }
 
