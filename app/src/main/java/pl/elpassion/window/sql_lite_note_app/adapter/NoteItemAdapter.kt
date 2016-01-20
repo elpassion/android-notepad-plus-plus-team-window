@@ -18,6 +18,9 @@ class NoteItemAdapter(private val note: Note) : ItemAdapter {
     override fun onCreateViewHolder(parent: ViewGroup): RecyclerView.ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         val view = layoutInflater.inflate(R.layout.note_list_item, parent, false)
+        view.setOnClickListener {
+
+        }
         return NameRateItemHolder(view)
     }
 
@@ -30,6 +33,5 @@ class NoteItemAdapter(private val note: Note) : ItemAdapter {
     private inner class NameRateItemHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val title = itemView.findViewById(R.id.list_item_title) as TextView
         val content = itemView.findViewById(R.id.list_item_content) as TextView
-
     }
 }
