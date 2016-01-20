@@ -56,8 +56,8 @@ class NoteDAO(context: Context, name: String = "notepadPlusPlusDB", factory: SQL
             val content = res.getString(res.getColumnIndex(KEY_NOTE_CONTENT))
             val id = res.getInt(res.getColumnIndex(KEY_NOTE_ID))
             val note = Note(id, title, content)
-            notes.add(note);
-            res.moveToNext();
+            notes.add(note)
+            res.moveToNext()
         }
         return notes
     }

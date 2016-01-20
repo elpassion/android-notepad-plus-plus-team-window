@@ -4,6 +4,11 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 
+fun Intent.getIntExtraOrThrow(key: String): Int {
+    val int = getIntExtra(key, Int.MIN_VALUE + 3)
+    if (int == Int.MIN_VALUE + 3) throw RuntimeException()
+    return int
+}
 
 class EditNoteActivity : NoteActivity() {
 
@@ -21,8 +26,7 @@ class EditNoteActivity : NoteActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val noteId = intent.getIntExtra(noteItemIdKey, -1)
-        id = if(noteId == -1) null else noteId
+        id = intent.getIntExtraOrThrow(noteItemIdKey)
         setUpNoteView()
     }
 

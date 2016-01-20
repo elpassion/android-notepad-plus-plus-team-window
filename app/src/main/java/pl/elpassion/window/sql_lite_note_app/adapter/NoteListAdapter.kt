@@ -8,8 +8,6 @@ import pl.elpassion.window.sql_lite_note_app.Note
 class NoteListAdapter(val notes : List<Note> ) : BaseAdapter(){
 
     init{
-        notes.forEach {
-            adapters.add(NoteItemAdapter( it ))
-        }
+        adapters.addAll(notes.map(::NoteItemAdapter))
     }
 }

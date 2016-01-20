@@ -21,11 +21,7 @@ open class BaseAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         adapters[position].onBindViewHolder(holder)
     }
 
-    override fun getItemCount(): Int {
-        return adapters.size
-    }
+    override fun getItemCount() =adapters.size
 
-    override fun getItemViewType(position: Int): Int {
-        return adapters[position].itemViewType
-    }
+    override fun getItemViewType(position: Int) = adapters[position].itemViewType
 }
