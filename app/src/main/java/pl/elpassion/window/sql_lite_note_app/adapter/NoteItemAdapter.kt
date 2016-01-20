@@ -5,8 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import de.greenrobot.event.EventBus
 import pl.elpassion.window.sql_lite_note_app.Note
 import pl.elpassion.window.sql_lite_note_app.R
+import pl.elpassion.window.sql_lite_note_app.message.ItemDetailsMessageEvent
 
 /**
  * Created by dmalantowicz on 15.01.2016.
@@ -19,7 +21,7 @@ class NoteItemAdapter(private val note: Note) : ItemAdapter {
         val layoutInflater = LayoutInflater.from(parent.context)
         val view = layoutInflater.inflate(R.layout.note_list_item, parent, false)
         view.setOnClickListener {
-
+            EventBus.getDefault().post(ItemDetailsMessageEvent(note.id))
         }
         return NameRateItemHolder(view)
     }
