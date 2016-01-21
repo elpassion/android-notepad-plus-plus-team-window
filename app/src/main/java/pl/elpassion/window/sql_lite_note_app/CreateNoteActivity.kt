@@ -1,14 +1,14 @@
 package pl.elpassion.window.sql_lite_note_app
 
-import android.content.Context
+import android.app.Activity
 import android.content.Intent
 
 class CreateNoteActivity : NoteActivity() {
 
     companion object {
-        fun start(context: Context) {
-            val intent = Intent(context, CreateNoteActivity::class.java)
-            context.startActivity(intent)
+        fun start(activity: Activity, resultOK : Int) {
+            val intent = Intent(activity, CreateNoteActivity::class.java)
+            activity.startActivityForResult(intent, resultOK)
         }
     }
 

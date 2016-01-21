@@ -74,5 +74,4 @@ class NoteDAO(context: Context, name: String = "notepadPlusPlusDB", factory: SQL
         throw NoSuchElementException()
     }
 
-
 }

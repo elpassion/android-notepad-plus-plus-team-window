@@ -37,7 +37,8 @@ open class NoteActivity : AppCompatActivity() {
         val title = noteTitle.text.toString()
         val note = Note(id, title, content)
         noteDao.save(note)
-        NotesViewActivity.start(this)
+        setResult(RESULT_OK)
+        finish()
         return super.onOptionsItemSelected(item)
     }
 

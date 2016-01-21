@@ -1,6 +1,5 @@
 package pl.elpassion.window.sql_lite_note_app
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
@@ -15,10 +14,8 @@ import pl.elpassion.window.sql_lite_note_app.message.NoteSelectedEvent
 class NotesViewActivity : AppCompatActivity() {
 
     companion object {
-        fun start(context: Context) {
-            val intent = Intent(context, NotesViewActivity::class.java)
-            context.startActivity(intent)
-        }
+        val editNoteActivityResultCode = 1
+        val createNoteActivityResultCode = 2
     }
     val recyclerView by lazy { findViewById(R.id.notes_list) as RecyclerView }
     protected val noteDao by lazy {  NoteDAO.getInstance(applicationContext) }
@@ -37,7 +34,7 @@ class NotesViewActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if(item.itemId == R.id.action_create){
-            CreateNoteActivity.start(this)
+            CreateNoteActivity.start(this, createNoteActivityResultCode)
         }
         return super.onOptionsItemSelected(item)
     }
@@ -53,12 +50,20 @@ class NotesViewActivity : AppCompatActivity() {
     }
 
     fun onEvent(event: NoteSelectedEvent){
-        EditNoteActivity.start(this, event.note)
+        EditNoteActivity.start(this, event.note, editNoteActivityResultCode)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_notes_view, menu)
         return super.onCreateOptionsMenu(menu)
     }
+
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if(resultCode == RESULT_OK){
+            setUpRecycleView()
+        }
+    }
+
 
 }
